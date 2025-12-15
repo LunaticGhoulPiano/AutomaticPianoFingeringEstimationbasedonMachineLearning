@@ -3,7 +3,8 @@
 - This project use the simple machine learning techniques to verify the feasibility on estimating piano fingering by supervised learning model with MIDI (Musical Instrument Digital Interface) data.
 - [Demo video on YouTube](https://youtu.be/b91wM3cI2VE)
 
-## Data preprocessing
+## A brief description of the experiments
+### Data preprocessing
 - [PIG Dataset](https://beam.kisarazu.ac.jp/~saito/research/PianoFingeringDataset/) from [Statistical Learning and Estimation of Piano Fingering](https://arxiv.org/abs/1904.10237)
 - Note that every single MIDI file in this PIG dataset is **a part of piano piece**, not a piece with complete movements.
 
@@ -43,13 +44,13 @@ Then We randomly shuffled the 309 files, split them into training, validation, a
 
 Finally we use ```-1``` to pad the missing value and use one-hot encoding to format the fingering numbers.
 
-## Model Design
+### Model Design
 - We chose to apply a Bi-LSTM model because the notes in a piece exhibit sequential dependencies.
 - There are two types of model: seperated hands and merged hands. The former one output 5 labels (for a single hand), and the latter output 10 labels (for both hands).
 - The reason we chose the "seperated" and "merged" design is the 3 types of hand symmetry mentiond in [Statistical Learning and Estimation of Piano Fingering](https://arxiv.org/abs/1904.10237).
 - Activation function using softmax, Loss function using categorical crossentropy.
 
-## Experiments
+### Experiments
 - Both seperated and merged models processed three experiments:
     1. Deciding the basic models for the latter two experiments, with hidden layers that stacked by different number of BiLSTM layer.
     2. Adding a single-head attention-layer before and after the last BiLSTM layer of models.
@@ -62,7 +63,7 @@ Finally we use ```-1``` to pad the missing value and use one-hot encoding to for
 - The activation function and loss function in output layer are ```softmax``` and ```categorical crossentropy```.
 - Experiment environment: Windows 10/11, Jupyter Notebool + Python 3.11.7 + Keras + cuDNN.
 
-## Evaluation on the models with PIG dataset
+### Evaluation on the models with PIG dataset
 - We used the perviously split test set to evaluate ```LSModel```, ```RSModel```, and ```MulAtt-MSModel```.
 
 | Nrom | ```LSModel``` | ```RSModel``` | ```MulAtt-MSModel``` |
@@ -71,8 +72,8 @@ Finally we use ```-1``` to pad the missing value and use one-hot encoding to for
 | Loss | **1.024** | 1.057 | 1.037 |
 | F1 score | 0.615 | 0.623 | **0.635** |
 
-## Evaluation on the models with self-composed piano pieces
-- To find out the generalization ability of the models, I composed three piano piece with **full phrases**, differ from the PIG dataset by comparison.
+### Evaluation on the models with self-composed (and arranged) piano pieces
+- To find out the generalization ability of the models, I composed and arranged three piano piece with **full phrases**, differ from the PIG dataset by comparison.
 - I use MuseScore 3 to compose and exported as MIDI file, then converted to the format of imporved PIG dataset (second table in [Data Processing](#data-preprocessing)).
 - These three pieces had different number of note events with ostinato.
 
@@ -107,9 +108,25 @@ Finally we use ```-1``` to pad the missing value and use one-hot encoding to for
     | Loss | **1.225** | 1.526 | 2.782 |
     | F1 score | 0.486 | **0.499** | 0.253 |
 
-- Conclusion
-    - The probability of correctly predicting reasonable piano fingerings increases as the number of note events grows.
-    - When fingering prediction errors occur, the number of errors for a single finger decreases from inner to outer fingers; non-dominant fingers (e.g., the ring finger) tend to have lower misprediction rates.
-    - In cases of incorrect predictions, fingerings that are closer to the ground-truth finger are more likely to be acceptable alternatives.
-    - We established piano fingering annotation models for both single-hand and two-hand scenarios, and identified correlations between musical pieces and fingering patterns. Among all factors, the number of note events had the most significant impact on performance when evaluating complete musical pieces.
-    - Due to the incompleteness and inaccuracy of the dataset, the model performance was limited. Applying other model architectures would introduce additional challenges, such as missing data and inconsistent formats (e.g., irregular temporal units).
+### Conclusion
+- The probability of correctly predicting reasonable piano fingerings increases as the number of note events grows.
+- When fingering prediction errors occur, the number of errors for a single finger decreases from inner to outer fingers; non-dominant fingers (e.g., the ring finger) tend to have lower misprediction rates.
+- In cases of incorrect predictions, fingerings that are closer to the ground-truth finger are more likely to be acceptable alternatives.
+- We established piano fingering annotation models for both single-hand and two-hand scenarios, and identified correlations between musical pieces and fingering patterns. Among all factors, the number of note events had the most significant impact on performance when evaluating complete musical pieces.
+- Due to the incompleteness and inaccuracy of the dataset, the model performance was limited. Applying other model architectures would introduce additional challenges, such as missing data and inconsistent formats (e.g., irregular temporal units).
+
+## Files and Folders
+- You should download PIG dataset first.
+- After [data processing](./DataProcessing.ipynb), a "Data" folder will be created, which contains the conversion of PIG dataset in improved format (csv files) in "fingerings_csv" subfolder and a "features.csv" file that concatenated all files.
+- Models
+    - Seperated models:
+        - [Left hand model](./Models/RNN_model/left/model.h5)
+        - [Right hand model](./Models/RNN_model/right/model.h5)
+    - [Merged model](./Models/RNN_merged_model/model.h5)
+- Self-composed(and arranged) pieces in [MidiData](./MidiData/):
+    - Piece A, ["第二堂社課教材"](./MidiData/MidiFiles/第二堂社課教材.mid)
+    - Piece B, ["小星星"](./MidiData/MidiFiles/小星星.mid)
+    - Piece C, ["楠橋詩耶印象曲"](./MidiData/MidiFiles/楠橋詩耶印象曲.mid)
+    - The ["TrueFingerings"](./MidiData/TrueFingerings/) are human-labeled fingerings on three pieces; ["Preprocessed"](./MidiData/Preprocessed/) are three pieces after converting to the improved PIG dataset format; and ["Predicts"](./MidiData/Predicts/) are fingerings and figures of each pieces after using seperated and merged models to predict.
+
+## Structure
