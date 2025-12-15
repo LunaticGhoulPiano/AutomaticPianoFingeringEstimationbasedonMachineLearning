@@ -1,0 +1,29 @@
+Model: "model_21"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_24 (InputLayer)          [(None, 5, 8)]       0           []                               
+                                                                                                  
+ bidirectional_95 (Bidirectiona  (None, 5, 512)      542720      ['input_24[0][0]']               
+ l)                                                                                               
+                                                                                                  
+ bidirectional_96 (Bidirectiona  (None, 5, 512)      1574912     ['bidirectional_95[0][0]']       
+ l)                                                                                               
+                                                                                                  
+ bidirectional_97 (Bidirectiona  (None, 5, 512)      1574912     ['bidirectional_96[0][0]']       
+ l)                                                                                               
+                                                                                                  
+ multi_head_attention_9 (MultiH  (None, 5, 512)      131776      ['bidirectional_97[0][0]',       
+ eadAttention)                                                    'bidirectional_97[0][0]',       
+                                                                  'bidirectional_97[0][0]']       
+                                                                                                  
+ bidirectional_98 (Bidirectiona  (None, 20)          41840       ['multi_head_attention_9[0][0]'] 
+ l)                                                                                               
+                                                                                                  
+ output (Dense)                 (None, 10)           210         ['bidirectional_98[0][0]']       
+                                                                                                  
+==================================================================================================
+Total params: 3,866,370
+Trainable params: 3,866,370
+Non-trainable params: 0
+__________________________________________________________________________________________________
