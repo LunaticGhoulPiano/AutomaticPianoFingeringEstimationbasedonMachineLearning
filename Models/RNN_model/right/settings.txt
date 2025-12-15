@@ -1,0 +1,28 @@
+Model: "model_25"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_30 (InputLayer)       [(None, 5, 8)]            0         
+                                                                 
+ bidirectional_124 (Bidirect  (None, 5, 512)           542720    
+ ional)                                                          
+                                                                 
+ bidirectional_125 (Bidirect  (None, 5, 512)           1574912   
+ ional)                                                          
+                                                                 
+ bidirectional_126 (Bidirect  (None, 5, 512)           1574912   
+ ional)                                                          
+                                                                 
+ bidirectional_127 (Bidirect  (None, 5, 512)           1574912   
+ ional)                                                          
+                                                                 
+ bidirectional_128 (Bidirect  (None, 10)               20720     
+ ional)                                                          
+                                                                 
+ output (Dense)              (None, 5)                 55        
+                                                                 
+=================================================================
+Total params: 5,288,231
+Trainable params: 5,288,231
+Non-trainable params: 0
+_________________________________________________________________
