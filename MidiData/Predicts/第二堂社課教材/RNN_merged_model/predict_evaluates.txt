@@ -1,0 +1,6 @@
+Merged hands: 
+	accuracy: 0.171
+	loss: 5.190999984741211
+	Precision score: 0.087
+	Recall score: 0.171
+	F1 score: 0.102

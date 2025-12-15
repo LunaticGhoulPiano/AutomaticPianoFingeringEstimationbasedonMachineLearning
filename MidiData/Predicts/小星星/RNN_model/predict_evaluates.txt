@@ -1,0 +1,12 @@
+Left hand: 
+	accuracy: 0.617
+	loss: 1.069000005722046
+	Precision score: 0.556
+	Recall score: 0.617
+	F1 score: 0.58
+Right hand: 
+	accuracy: 0.214
+	loss: 3.680999994277954
+	Precision: 0.462
+	Recall score: 0.214
+	F1 score: 0.167

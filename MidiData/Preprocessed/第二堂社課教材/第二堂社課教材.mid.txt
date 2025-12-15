@@ -1,0 +1,102 @@
+Track 0:
+MetaMessage('track_name', name='Piano\x00', time=0), total_time: 0
+MetaMessage('time_signature', numerator=4, denominator=4, clocks_per_click=24, notated_32nd_notes_per_beat=8, time=0), total_time: 0
+MetaMessage('key_signature', key='C', time=0), total_time: 0
+MetaMessage('set_tempo', tempo=500000, time=0), total_time: 0
+control_change channel=0 control=121 value=0 time=0, total_time: 0
+program_change channel=0 program=0 time=0, total_time: 0
+control_change channel=0 control=7 value=100 time=0, total_time: 0
+control_change channel=0 control=10 value=64 time=0, total_time: 0
+control_change channel=0 control=91 value=0 time=0, total_time: 0
+control_change channel=0 control=93 value=0 time=0, total_time: 0
+MetaMessage('midi_port', port=0, time=0), total_time: 0
+note_on channel=0 note=67 velocity=80 time=0, total_time: 0
+note_on channel=0 note=67 velocity=0 time=455, total_time: 455
+note_on channel=0 note=65 velocity=80 time=25, total_time: 480
+note_on channel=0 note=65 velocity=0 time=455, total_time: 935
+note_on channel=0 note=64 velocity=80 time=25, total_time: 960
+note_on channel=0 note=64 velocity=0 time=455, total_time: 1415
+note_on channel=0 note=62 velocity=80 time=25, total_time: 1440
+note_on channel=0 note=62 velocity=0 time=455, total_time: 1895
+note_on channel=0 note=64 velocity=80 time=25, total_time: 1920
+note_on channel=0 note=64 velocity=0 time=455, total_time: 2375
+note_on channel=0 note=65 velocity=80 time=25, total_time: 2400
+note_on channel=0 note=65 velocity=0 time=455, total_time: 2855
+note_on channel=0 note=67 velocity=80 time=25, total_time: 2880
+note_on channel=0 note=67 velocity=0 time=455, total_time: 3335
+note_on channel=0 note=64 velocity=80 time=25, total_time: 3360
+note_on channel=0 note=64 velocity=0 time=455, total_time: 3815
+note_on channel=0 note=62 velocity=80 time=25, total_time: 3840
+note_on channel=0 note=62 velocity=0 time=455, total_time: 4295
+note_on channel=0 note=64 velocity=80 time=25, total_time: 4320
+note_on channel=0 note=64 velocity=0 time=455, total_time: 4775
+note_on channel=0 note=65 velocity=80 time=25, total_time: 4800
+note_on channel=0 note=65 velocity=0 time=455, total_time: 5255
+note_on channel=0 note=62 velocity=80 time=25, total_time: 5280
+note_on channel=0 note=62 velocity=0 time=455, total_time: 5735
+note_on channel=0 note=64 velocity=80 time=25, total_time: 5760
+note_on channel=0 note=64 velocity=0 time=455, total_time: 6215
+note_on channel=0 note=65 velocity=80 time=25, total_time: 6240
+note_on channel=0 note=65 velocity=0 time=455, total_time: 6695
+note_on channel=0 note=67 velocity=80 time=25, total_time: 6720
+note_on channel=0 note=67 velocity=0 time=911, total_time: 7631
+note_on channel=0 note=79 velocity=80 time=49, total_time: 7680
+note_on channel=0 note=79 velocity=0 time=455, total_time: 8135
+note_on channel=0 note=77 velocity=80 time=25, total_time: 8160
+note_on channel=0 note=77 velocity=0 time=455, total_time: 8615
+note_on channel=0 note=76 velocity=80 time=25, total_time: 8640
+note_on channel=0 note=76 velocity=0 time=455, total_time: 9095
+note_on channel=0 note=79 velocity=80 time=25, total_time: 9120
+note_on channel=0 note=79 velocity=0 time=455, total_time: 9575
+note_on channel=0 note=77 velocity=80 time=25, total_time: 9600
+note_on channel=0 note=77 velocity=0 time=455, total_time: 10055
+note_on channel=0 note=76 velocity=80 time=25, total_time: 10080
+note_on channel=0 note=76 velocity=0 time=455, total_time: 10535
+note_on channel=0 note=74 velocity=80 time=25, total_time: 10560
+note_on channel=0 note=74 velocity=0 time=455, total_time: 11015
+note_on channel=0 note=77 velocity=80 time=25, total_time: 11040
+note_on channel=0 note=77 velocity=0 time=455, total_time: 11495
+note_on channel=0 note=76 velocity=80 time=25, total_time: 11520
+note_on channel=0 note=76 velocity=0 time=455, total_time: 11975
+note_on channel=0 note=79 velocity=80 time=25, total_time: 12000
+note_on channel=0 note=79 velocity=0 time=455, total_time: 12455
+note_on channel=0 note=77 velocity=80 time=25, total_time: 12480
+note_on channel=0 note=77 velocity=0 time=455, total_time: 12935
+note_on channel=0 note=74 velocity=80 time=25, total_time: 12960
+note_on channel=0 note=74 velocity=0 time=455, total_time: 13415
+note_on channel=0 note=76 velocity=80 time=25, total_time: 13440
+note_on channel=0 note=76 velocity=0 time=455, total_time: 13895
+note_on channel=0 note=74 velocity=80 time=25, total_time: 13920
+note_on channel=0 note=74 velocity=0 time=455, total_time: 14375
+note_on channel=0 note=72 velocity=80 time=25, total_time: 14400
+note_on channel=0 note=72 velocity=0 time=911, total_time: 15311
+MetaMessage('end_of_track', time=1), total_time: 15312
+
+Track 1:
+MetaMessage('track_name', name='Piano\x00', time=0), total_time: 0
+MetaMessage('key_signature', key='C', time=0), total_time: 0
+MetaMessage('midi_port', port=0, time=0), total_time: 0
+note_on channel=0 note=48 velocity=80 time=0, total_time: 0
+note_on channel=0 note=48 velocity=0 time=1823, total_time: 1823
+note_on channel=0 note=55 velocity=80 time=97, total_time: 1920
+note_on channel=0 note=55 velocity=0 time=1823, total_time: 3743
+note_on channel=0 note=47 velocity=80 time=97, total_time: 3840
+note_on channel=0 note=47 velocity=0 time=1823, total_time: 5663
+note_on channel=0 note=48 velocity=80 time=97, total_time: 5760
+note_on channel=0 note=48 velocity=0 time=1823, total_time: 7583
+note_on channel=0 note=48 velocity=80 time=97, total_time: 7680
+note_on channel=0 note=48 velocity=0 time=911, total_time: 8591
+note_on channel=0 note=55 velocity=80 time=49, total_time: 8640
+note_on channel=0 note=55 velocity=0 time=911, total_time: 9551
+note_on channel=0 note=50 velocity=80 time=49, total_time: 9600
+note_on channel=0 note=50 velocity=0 time=911, total_time: 10511
+note_on channel=0 note=53 velocity=80 time=49, total_time: 10560
+note_on channel=0 note=53 velocity=0 time=911, total_time: 11471
+note_on channel=0 note=55 velocity=80 time=49, total_time: 11520
+note_on channel=0 note=55 velocity=0 time=911, total_time: 12431
+note_on channel=0 note=43 velocity=80 time=49, total_time: 12480
+note_on channel=0 note=43 velocity=0 time=911, total_time: 13391
+note_on channel=0 note=48 velocity=80 time=49, total_time: 13440
+note_on channel=0 note=48 velocity=0 time=1823, total_time: 15263
+MetaMessage('end_of_track', time=1), total_time: 15264
+
