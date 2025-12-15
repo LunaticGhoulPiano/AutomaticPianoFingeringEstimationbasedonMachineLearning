@@ -61,7 +61,7 @@ Finally we use ```-1``` to pad the missing value and use one-hot encoding to for
         - Rightt-hand model: 5 BiLSTM layers, named as ```RSModel```
     - Merged models: 3 BiLSTM layers + 1 Mul-Head Attention layer + 1 BiLSTM layer, named as ```MulAtt-MSModel```
 - The activation function and loss function in output layer are ```softmax``` and ```categorical crossentropy```.
-- Experiment environment: Windows 10/11, Jupyter Notebool + Python 3.11.7 + Keras + cuDNN.
+- Experiment environment: Windows 10/11, Jupyter Notebool + Python 3.11.7 + Keras + cuDNN + Anaconda.
 
 ### Evaluation on the models with PIG dataset
 - We used the perviously split test set to evaluate ```LSModel```, ```RSModel```, and ```MulAtt-MSModel```.
@@ -128,5 +128,156 @@ Finally we use ```-1``` to pad the missing value and use one-hot encoding to for
     - Piece B, ["小星星"](./MidiData/MidiFiles/小星星.mid)
     - Piece C, ["楠橋詩耶印象曲"](./MidiData/MidiFiles/楠橋詩耶印象曲.mid)
     - The ["TrueFingerings"](./MidiData/TrueFingerings/) are human-labeled fingerings on three pieces; ["Preprocessed"](./MidiData/Preprocessed/) are three pieces after converting to the improved PIG dataset format; and ["Predicts"](./MidiData/Predicts/) are fingerings and figures of each pieces after using seperated and merged models to predict.
+- The [soundfonts](./SoundFonts/) (.sf2) files can use your own piano soundfont file, we provide a lite on  for demo.
+- If you want to run fingering prediction on your own piano solo midi file, please put the file in [MidiData/MidiFiles](./MidiData/MidiFiles/) first, then run [RNN_model.py](./RNN_model.py) or [RNN_merged_model.py](./RNN_merged_model.py); and for the visualization, run [gui.py](./gui.py) after the fingering prediction.
 
 ## Structure
+```
+AutomaticPianoFingeringEstimationbasedonMachineLearning
+├──.gitignore
+├──LICENSE
+├──README.md
+├──requirenemts.txt
+├──基於機器學習的鋼琴指法預測.pptx # PPT in Traditional Chinese
+├──基於機器學習的鋼琴指法預測.pdf # Report in Traditional Chinese
+├──gui.py # main script
+├──RNN_model.py
+├──RNN_merged_model.py
+├──DataProcessing.ipynb
+├──fingering_txt_to_csv.ipynb
+├──BiLSTM_seperated.ipynb
+├──BiLSTM_merged.ipynb
+├──Demo_pics
+│  ├──gui.jpg
+│  ├──RNN_merged_model_execute.jpg
+│  └──RNN_model_execute.jpg
+├──SoundFonts
+│  └──Nice-Steinway-Lite-v3.0.sf2
+├──Utils
+│  ├──image.png
+│  ├──KeyPos.py
+│  ├──MidiParser.py
+│  ├──MidiParserForGUI.py
+│  ├──Parser.py
+│  └──video.py
+├──Models
+│  ├──RNN_model
+│  │  ├──left
+│  │  │  ├──model.h5
+│  │  │  ├──settings.txt
+│  │  │  ├──structure.png
+│  │  │  ├──training_validation_Begin_accuracy.png
+│  │  │  └──training_validation_Begin_loss.png
+│  │  ├──right
+│  │  │  ├──model.h5
+│  │  │  ├──settings.txt
+│  │  │  ├──structure.png
+│  │  │  ├──training_validation_Begin_accuracy.png
+│  │  │  └──training_validation_Begin_loss.png
+│  │  └──predicted
+│  │     ├──predict_evaluates.txt
+│  │     ├──left_Begin_pred_probs.csv
+│  │     ├──left_matrix.png
+│  │     ├──left_pred.csv
+│  │     ├──right_Begin_pred_probs.csv
+│  │     ├──right_matrix.png
+│  │     └──right_pred.csv
+│  └──RNN_merged_model
+│     ├──model.h5
+│     ├──settings.txt
+│     ├──predict_evaluates.txt
+│     ├──Begin_pred_probs.csv
+│     ├──matrix.png
+│     ├──pred.csv
+│     ├──structure.png
+│     ├──training_validation_Begin_accuracy.png
+│     └──training_validation_Begin_loss.png
+└──MidiData
+   ├──MidiFiles
+   │  ├──第二堂社課教材.mid
+   │  ├──小星星.mid
+   │  └──楠橋詩耶印象曲.mid
+   ├──Preprocessed
+   │  ├──第二堂社課教材
+   │  │  ├──第二堂社課教材.mid.txt
+   │  │  ├──left_features.csv
+   │  │  ├──right_features.csv
+   │  │  ├──merged_features.csv
+   │  │  └──track_records.txt
+   │  ├──小星星
+   │  │  ├──小星星.mid.txt
+   │  │  ├──left_features.csv
+   │  │  ├──right_features.csv
+   │  │  ├──merged_features.csv
+   │  │  └──track_records.txt
+   │  └──楠橋詩耶印象曲
+   │     ├──楠橋詩耶印象曲.mid.txt
+   │     ├──left_features.csv
+   │     ├──right_features.csv
+   │     ├──merged_features.csv
+   │     └──track_records.txt
+   ├──TrueFingerings
+   │  ├──第二堂社課教材
+   │  │  ├──left_true.csv
+   │  │  ├──right_true.csv
+   │  │  └──merged_ture.csv
+   │  ├──小星星
+   │  │  ├──left_true.csv
+   │  │  ├──right_true.csv
+   │  │  └──merged_ture.csv
+   │  └──楠橋詩耶印象曲
+   │     ├──left_true.csv
+   │     ├──right_true.csv
+   │     └──merged_ture.csv
+   └──Predicts
+      ├──第二堂社課教材
+      │  ├──RNN_model
+      │  │  ├──predict_evaluates.txt
+      │  │  ├──left_confusion_matrix.png
+      │  │  ├──left_pred_probs.csv
+      │  │  ├──left_pred.csv
+      │  │  ├──right_confusion_matrix.png
+      │  │  ├──right_pred_probs.csv
+      │  │  └──right_pred.csv
+      │  └──RNN_merged_model
+      │     ├──predict_evaluates.txt
+      │     ├──merged_confusion_matrix.png
+      │     ├──merged_pred_probs.csv
+      │     └──merged_pred.csv
+      ├──小星星
+      │  ├──RNN_model
+      │  │  ├──predict_evaluates.txt
+      │  │  ├──left_confusion_matrix.png
+      │  │  ├──left_pred_probs.csv
+      │  │  ├──left_pred.csv
+      │  │  ├──right_confusion_matrix.png
+      │  │  ├──right_pred_probs.csv
+      │  │  └──right_pred.csv
+      │  └──RNN_merged_model
+      │     ├──predict_evaluates.txt
+      │     ├──merged_confusion_matrix.png
+      │     ├──merged_pred_probs.csv
+      │     └──merged_pred.csv
+      └──楠橋詩耶印象曲
+         ├──RNN_model
+         │  ├──predict_evaluates.txt
+         │  ├──left_confusion_matrix.png
+         │  ├──left_pred_probs.csv
+         │  ├──left_pred.csv
+         │  ├──right_confusion_matrix.png
+         │  ├──right_pred_probs.csv
+         │  └──right_pred.csv
+         └──RNN_merged_model
+            ├──predict_evaluates.txt
+            ├──merged_confusion_matrix.png
+            ├──merged_pred_probs.csv
+            └──merged_pred.csv
+```
+
+## How to use
+1. Install [requirements.txt](./requirements.txt).
+2. Install [PyTorch](https://pytorch.org/).
+3. Install [CUDA and cuDNN](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/).
+4. Install [FFmpeg](https://www.ffmpeg.org/) and set to the environment variables.
+5. Install [fluidsynth]() and set the absolute path of ```fluidsynth.exe``` to the variable ```FLUIDSYNTH_PATH``` in [gui.py](./gui.py).
+6. Run [RNN_model.py](./RNN_model.py) or [RNN_merged_model.py](./RNN_merged_model.py) to predict fingerings by the trained models, then run [gui.py](./gui.py) to visualize.

@@ -11,7 +11,7 @@ import threading
 import subprocess
 
 # 指定 fluidsynth.exe 的完整路徑
-FLUIDSYNTH_PATH = r"C:\fluidsynth-2.4.0-win10-x64\bin\fluidsynth.exe"
+FLUIDSYNTH_PATH = r"C:\fluidsynth-2.4.0-win10-x64\bin\fluidsynth.exe" # PUT ABSOLUTE PATH OF fluidsynth.exe HERE
 
 class CustomFluidSynth(FluidSynth):
     def midi_to_audio(self, midi_file, audio_file):
