@@ -1,0 +1,12 @@
+.vscode
+__pycache__
+
+# only upload the litest sf2
+/SoundFonts/*
+!/SoundFonts/Nice-Steinway-Lite-v3.0.sf2
+
+# privacy
+#paper_and_books
+PPT
+Reports
+EEIC_Theme_and_Idea_Competition
